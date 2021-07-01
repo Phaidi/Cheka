@@ -1,0 +1,27 @@
+h1{
+  color: var(--ion-color-primary);
+}
+
+ion-item {
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid var(--ion-color-primary);
+    --highlight-height: 0px;
+  }
+
+ion-item{
+    --highlight-color-valid: var(--ion-color-primary);
+    --highlight-color-invalid: var(--ion-color-primary);
+}
+
+.text-danger{
+    color: red;
+}
+
+  ion-button{
+    height: 48px;
+  }
+
+.max{
+  max-width: 550px;
+}

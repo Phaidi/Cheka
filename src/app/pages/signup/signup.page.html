@@ -1,0 +1,75 @@
+<ion-content class="ion-padding">
+
+  <div class="max">
+
+  <h1 color="primary">Create your Account</h1>
+  <p>Please enter details to register</p>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <ion-item class="ion-margin-top">
+      <ion-input placeholder="First Name" formControlName="firstname" type="text"></ion-input>
+      <ion-icon name="person-sharp" color="primary" slot="start"></ion-icon>
+    </ion-item>
+    <!--Validation-->
+    <div *ngIf="firstname?.invalid && (firstname?.dirty || firstname?.touched)" class="text-danger">
+      <small *ngIf="firstname?.errors?.required"> *Name is required</small>
+      <small *ngIf="firstname?.errors?.pattern"> *Name  must have letters only</small>
+      <small *ngIf="firstname?.errors?.minlength"> *Name suppose to be more than 3 letter</small>
+    </div>
+    <!-- /validation-->
+
+    <ion-item class="ion-margin-top">
+      <ion-input placeholder="Last Name" formControlName="lastname" type="text"></ion-input>
+      <ion-icon name="person-sharp" color="primary" slot="start"></ion-icon>
+    </ion-item>
+    <!--Validation-->
+    <div *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)" class="text-danger">
+      <small  *ngIf="lastname?.errors?.required"> *Name is required</small>
+      <small  *ngIf="lastname?.errors?.pattern"> Name must have letters only</small>
+      <small  *ngIf="lastname?.errors?.minlength"> *Name suppose to be more than 3 letter</small>
+    </div>
+    <!-- /validation-->
+    
+    <ion-item class="ion-margin-top">
+      <ion-input placeholder="Email Address" formControlName="emailAddress" type="text"></ion-input>
+      <ion-icon  name="mail-sharp" color="primary" slot="start"></ion-icon>
+    </ion-item>
+    <!--validation-->
+    <div *ngIf="emailAddress?.invalid && (emailAddress?.dirty || emailAddress?.touched)" class="text-danger">
+      <small  *ngIf="emailAddress?.errors?.required"> *Email address is required</small>
+      <small  *ngIf="emailAddress?.errors?.email"> *Invalid email address</small>
+    </div>
+    <small *ngIf="isEmailTakenError" class="text-danger md-form">
+        *Email is taken
+    </small>
+    <!--/ validation-->
+    
+
+    <ion-item class="ion-margin-top">
+      <ion-input placeholder="Password" formControlName="password" type="password"></ion-input>
+      <ion-icon name="key-sharp" color="primary" slot="start"></ion-icon>
+    </ion-item>
+    <!--validation-->
+    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
+      <small  *ngIf="password?.errors?.required"> *password is required</small>
+      <small  *ngIf="password?.errors?.pattern"> *Password must be minimum of 8 characters, must have at least 1 spacial 
+          character, uppercase, lowercase and a number</small>
+    </div>
+    <!--validation-->
+
+    <ion-item class="ion-margin-top">
+      <ion-input placeholder="Confirm Password" formControlName="confirmPassword" type="password"></ion-input>
+      <ion-icon name="key-sharp" color="primary" slot="start"></ion-icon>
+    </ion-item>
+    <small *ngIf="signupForm.errors?.misMatch" class="text-danger">*Passwords don't not match</small>
+
+    <ion-button type="submit" [disabled]='!signupForm.valid' expand="full" class="ion-margin-top">Sign up</ion-button>
+  </form>
+
+  <div  class="ion-margin-top ion-margin-buttom">
+    Already have an account? 
+    <ion-router-link color="primary" href="/login"> login</ion-router-link>
+  </div>
+
+  </div>
+
+</ion-content>
